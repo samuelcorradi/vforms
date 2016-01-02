@@ -1,6 +1,6 @@
 /*
-** VFORMS v1.0a
-** Script para validacao facil de formularios
+** VFORMS v1.0.0
+** Script para validacao facil de formularios.
 ** Desenvolvido por Samuel Corradi - http://www.samuelcorradi.com.br
 ** Licenciado sob Creative Commons by-sa
 ** http://creativecommons.org/licenses/by-sa/2.5/br/
@@ -11,12 +11,12 @@ vforms = (function(escope) {
 	/**
 	 * Adiciona novos tipos ao objeto.
 	 */
-	escope.setType = function(type, mask, fun, errormsg)
+	escope.setType = function(type, mask, func, errormsg)
 	{
 
 		if( mask ) escope.masks[type] = mask;
 
-		if( fun ) escope.validators[type] = fun;
+		if( func ) escope.validators[type] = func;
 
 		if( errormsg ) escope.errors[type] = errormsg;
 
