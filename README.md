@@ -1,4 +1,5 @@
 # 1. O que é
+
 **vForms** é um pequeno script não-obstrusivo para validação de formulários do lado cliente.
 Existem diversos validadores de formulários em Javascript, porém é dificil encontrar aquele que seja realmente útil em qualquer situação. Dos que já encontrei, sempre algum se destaca em determinada tarefa, mas falha em outras. Meu intuito então é: *unir em um só validador tudo que encontrei de melhor nos validadores que já utilizei*.
 
@@ -12,7 +13,7 @@ Atualmente o **vForms** é capaz de:
 
 # 2. Como utilizar
 
-1. Insira no head o caminho para o arquivo vForm.
+1. Insira no head o caminho para o arquivo **vForms**.
 ```html
 <script src="vforms.js" type="text/javascript"></script>
 ```
@@ -24,9 +25,10 @@ Atualmente o **vForms** é capaz de:
 ```html
 <label for="input_telefone" class="required phone" />
 ```
-4. Editando o arquivo do *vForm você pode adicionar novas mascaras e funções de validação de valores.
+4. Editando o arquivo do **vForms** você pode adicionar novas mascaras e funções de validação de valores.
 
 # 3. Funcionalidades
+
 **vForms** é capaz de duas coisas que, na minha opinião, são fundamentais para o funcionamento eficaz de formulários: *validar* e *mascarar* os valores digitados ainda no lado cliente. Por ser escrito em JavaScript, **vForms** não faz a validação do lado servidor. Você terá que fazer essa parte de acordo com a linguagem que seu servidor suporte.
 
 ## Criando máscaras
@@ -48,7 +50,8 @@ Ao contrário das máscaras, para criar uma validação é necessário ter conhe
 Para inserir uma nova validação, crie no local destinado a função que irá validar determinado valor (como e-mails, CPFs, etc.) e crie seu alias na matriz 'validadores' dentro do código. Esse alias será usado dentro do atributo 'class' da tag label para chamar a função.
 Ou seja, declare uma classe na tag label do campo desejado (com o mesmo nome do alias criado) para chamar a função quando o formulário for submetido.
 Agora basta criar uma mensagem de erro para caso a validação não retorne verdadeiro. Utilize o nome do alias para definir para qual função essa mensagem de erro pertence.
-Por exemplo:
+
+**Por exemplo:**
 
 ```javascript
 function vEmail(t)
@@ -74,7 +77,7 @@ escope.errors = {
 ## Máscara para telefones
 ```html
 <form class="vForms">
-<label for="input_telefone" class="vMaskTelefone">Telefone:</label><br />
+<label for="input_telefone" class="phone">Telefone:</label><br />
 <input id="input_telefone" name="input_telefone" maxlength="14" />
 </form>
 ```
@@ -82,7 +85,7 @@ escope.errors = {
 ## Máscara para cartões de crédito
 ```html
 <form class="vForms">
-<label for="input_cartao" class="vMaskCartao">Número do cartão:</label><br />
+<label for="input_cartao" class="creditcard">Número do cartão:</label><br />
 <input id="input_cartao" name="input_cartao" maxlength="19" />
 </form>
 ```
@@ -90,7 +93,7 @@ escope.errors = {
 ## Validação para campos obrigatórios
 ```html
 <form class="vForms">
-<label for="input_nome" class="vObrigatorio">Nome:</label><br />
+<label for="input_nome" class="required">Nome:</label><br />
 <input id="input_nome" name="input_nome" maxlength="45" />
 <input type="submit" value="Testar" />
 </form>
@@ -99,10 +102,10 @@ escope.errors = {
 ## Validação para campos de e-mail
 ```html
 <form class="vForms">
-<label for="input_email" class="vEmail">E-mail:<br />
+<label for="input_email" class="email">E-mail:<br />
 <input id="input_email" name="input_email" maxlength="45" />
-<input type="submit" value="Testar" />
 </label>
+<input type="submit" value="Testar" />
 </form>
 ```
   
@@ -117,7 +120,14 @@ escope.errors = {
 
 - Além dos inputs, funciona agora também com textareas;
 - Substituído o esquema de usar expressões regulares para criar máscaras;
-- Funciona mesmo que o campo não esteja dentro da tag label. **Exemplo**: <label><input /></label> ou <label></label><input />
+- Funciona mesmo que o campo não esteja dentro da tag label. **Exemplo**:
+```html
+<label><input /></label>
+```
+ou 
+```html
+<label></label><input />
+```
 - Mascara o campo ao mesmo tempo que este é preenchido;
 - Mensagens de erro passam por um 'trim' para serem exibidas;
 - A busca pelo campo de texto agora é através do **for** do label.
