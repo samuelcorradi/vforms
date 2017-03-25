@@ -111,12 +111,12 @@ escope.errors = {
   
 # 5. Histórico de alterações
 
-**v1.0a**
+**v1.0.1**
 
 - Corrigido bug que fazia campos sem máscara procurar por alguma função de máscara;
 - Incluída opção para adicionar uma marcação em campos obrigatórios.
 
-**v1.0**
+**v1.0.0**
 
 - Além dos inputs, funciona agora também com textareas;
 - Substituído o esquema de usar expressões regulares para criar máscaras;
